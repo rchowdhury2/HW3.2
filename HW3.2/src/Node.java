@@ -10,6 +10,6 @@ public class Node {
 	}
 	
 	public String toString(){
-		return data + "";
+		return name;
 	}
 }
