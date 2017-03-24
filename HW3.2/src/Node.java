@@ -1,39 +1,24 @@
-public class Node {
-	public int data = 0;
-	public String name = "";
+
+public class Link {
+	public String data;
+	public Node previous;
 	public Node next;
 	
-	public Node(int data, String name){
+	public Link(String data){
+		previous = null;
 		this.data = data;
-		this.name = name;
+		next = null;
+	}
+	public Link(String data, Node previous, Node next){
+		this.previous = previous;
+		this.data = data;
 		this.next = next;
 	}
-	
-	public Node getNext() {
-		return next;
-	}
-
-	public void setNext(Node node) {
-		this.next = node;
-	}
-	
-	public int getData() {
+	public String data(){
 		return data;
 	}
-	
-	public void setData(int data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String toString(){
-		return name + data;
-	}
-
-}	
+}
