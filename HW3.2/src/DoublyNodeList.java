@@ -1,16 +1,12 @@
 
 public class DoublyNodeList {
-	public Node head;
-	public int size;
+	public Node head = null;
+	public int size = 0;
 	
-	DoublyNodeList(){
-		head = null;
-		size = 0;
-	}
 	public boolean isEmpty(){
 		return (head == null);
 	}
-	public void addFront(String data){
+	public void listForward(String data){
 		if (head == null){
 			head = new Node(null, data, head);
 		}
@@ -21,7 +17,7 @@ public class DoublyNodeList {
 			}
 		size++;
 		}
-	public void addBack(String data){
+	public void listBackward(String data){
 		if (head == null){
 			head = new Node(null, data, head);
 		}
@@ -46,15 +42,37 @@ public class DoublyNodeList {
 			current = current.next;
 			}
 		}
-		
 	
+	public boolean findNode(Node node){
+        if(node==null) return false;
+        Node currentNode = head;
+        while(currentNode.Data()!= node.Data())
+        {
+            currentNode = currentNode.getNext();
+            if(currentNode == null)
+                return false;
+        }
+        return true;
+    }
+		
 	public static void main(String[] args){
 		DoublyNodeList x = new DoublyNodeList();
-		x.addFront("hi");
-		x.addFront("test");
+		x.listForward("a");
+		x.listForward("b");
+		x.listForward("c");
+		x.listBackward("-------");
+		x.listBackward("a");
+		x.listBackward("b");
+		x.listBackward("c");
 		x.print();
-		x.addBack("hola");
-		x.print();
+		
+		Node node1 = new Node("a");
+		System.out.println("Length : "+x.size());
+        if(x.findNode(node1))
+            System.out.println("Node found: "+node1.Data());
+        else
+            System.out.println("Node not found: "+node1.Data());
+       
 		
 	}
 }
