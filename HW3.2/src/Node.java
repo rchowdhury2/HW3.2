@@ -14,7 +14,7 @@ public class Node{
 		this.data = data;
 		this.next = next;
 	}
-	public String data(){
+	public String Data(){
 		return data;
 	}
 	public void setData(String data) {
