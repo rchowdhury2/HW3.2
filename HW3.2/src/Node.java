@@ -1,15 +1,15 @@
 
-public class Link {
+public class Node{
 	public String data;
 	public Node previous;
 	public Node next;
 	
-	public Link(String data){
+	public Node(String data){
 		previous = null;
 		this.data = data;
 		next = null;
 	}
-	public Link(String data, Node previous, Node next){
+	public Node(Node previous, String data, Node next){
 		this.previous = previous;
 		this.data = data;
 		this.next = next;
@@ -20,5 +20,4 @@ public class Link {
 	public void setData(String data) {
 		this.data = data;
 	}
-	
 }
