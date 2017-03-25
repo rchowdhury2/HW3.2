@@ -1,4 +1,5 @@
 
+
 public class Node{
 	public String data;
 	public Node previous;
@@ -23,5 +24,12 @@ public class Node{
 	}
 	public void setData(String data) {
 		this.data = data;
+	}
+	public void order(){
+		Node current = next;
+		while(current != null && data.compareTo(next.data) <= 0){
+	        previous = current;
+	        current = current.next;
+	    }
 	}
 }

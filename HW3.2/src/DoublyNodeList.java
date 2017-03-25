@@ -1,6 +1,5 @@
-
 public class DoublyNodeList {
-	public Node head = null;
+	public static Node head = null;
 	public int size = 0;
 	
 	public boolean isEmpty(){
@@ -17,6 +16,34 @@ public class DoublyNodeList {
 			}
 		size++;
 		}
+	
+	public void deleteNode(int index){
+		if (head == null) return;
+		if (index < 1 || index > size) return;
+		
+		Node current = head;
+		int i = 1;
+		while(i < index){
+			current = current.next;
+			i++;
+		}
+		if (current.next == null){
+			current.previous.next = null;
+		}
+		else if(current.previous == null){
+			current = current.next;
+			current.previous = null;
+			head = current;
+		}
+		else{
+			current.previous.next = current.next;
+			current.next.previous = current.previous;
+		}
+		size++;
+		Integer.toString(i);
+		Integer.toString(index);
+		}
+	
 	public void listBackward(String data){
 		if (head == null){
 			head = new Node(null, data, head);
@@ -29,6 +56,7 @@ public class DoublyNodeList {
 		Node newNode = new Node(current, data, null);
 		current.next = newNode;
 		}
+		size++;
 	}
 	
 	public int size(){
@@ -56,24 +84,51 @@ public class DoublyNodeList {
     }
 		
 	public static void main(String[] args){
+		 
 		DoublyNodeList x = new DoublyNodeList();
-		x.listForward("a");
-		x.listForward("b");
-		x.listForward("c");
+		String a = "alpha";
+		String b = "beta";
+		String c = "gamma";
+		
+		x.listForward(a);
+		x.listForward(b);
+		x.listForward(c);
 		x.listBackward("-------");
-		x.listBackward("a");
-		x.listBackward("b");
-		x.listBackward("c");
+		x.listBackward(a);
+		x.listBackward(b);
+		x.listBackward(c);
+		x.listBackward("-------");
+		x.print();
+		System.out.println("The Beta node will be deleted");
+		x.deleteNode(Integer.parseInt("2"));
+		x.deleteNode(Integer.parseInt("5"));
+		x.listBackward("-------");
 		x.print();
 		
-		Node node1 = new Node("a");
+		Node node1 = new Node(a);
 		System.out.println("Length : "+x.size());
         if(x.findNode(node1))
             System.out.println("Node found: "+node1.Data());
         else
             System.out.println("Node not found: "+node1.Data());
-       
-		
-	}
-}
+        
+		Node node2 = new Node(b);
+        if(x.findNode(node2))
+            System.out.println("Node found: "+node2.Data());
+        else
+            System.out.println("Node not found: "+node2.Data());
+        
+		Node node3 = new Node(c);
+        if(x.findNode(node3))
+            System.out.println("Node found: "+node3.Data());
+        else
+            System.out.println("Node not found: "+node3.Data());
+        
+
+   
+                }
+            }
+        
+        
+
 
